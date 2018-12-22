@@ -34,10 +34,16 @@
     <Compile Include="app\routes.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="config.py" />
+    <Compile Include="master.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="microblog.py" />
     <Compile Include="migrations\env.py" />
     <Compile Include="migrations\versions\780739b227a7_posts_table.py" />
     <Compile Include="migrations\versions\e517276bb1c2_users_table.py" />
+    <Compile Include="travail_bien.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app" />

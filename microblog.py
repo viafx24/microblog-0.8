@@ -4,6 +4,9 @@ from app.models import User, Post
 #test
 #guillaume
 
+#ajout dans nouvelle branche 1
+#ajout dans nouvelle branche 2
+
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}

@@ -3,7 +3,7 @@ from app.models import User, Post
 
 #test conflit (portable)
 
-#test reset 1
+#test travail 1
 
 @app.shell_context_processor
 def make_shell_context():

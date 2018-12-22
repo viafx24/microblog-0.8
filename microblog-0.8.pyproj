@@ -38,9 +38,6 @@
     <Compile Include="migrations\env.py" />
     <Compile Include="migrations\versions\780739b227a7_posts_table.py" />
     <Compile Include="migrations\versions\e517276bb1c2_users_table.py" />
-    <Compile Include="module2.py">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app" />

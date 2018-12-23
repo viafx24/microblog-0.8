@@ -8,27 +8,27 @@ with open('Data','rb') as fichier:
         Data=mon_depickler.load()
 
 
-users = User.query.all()
-for u in users:
-    db.session.delete(u)
+#users = User.query.all()
+#for u in users:
+#    db.session.delete(u)
 
-citations = Citation.query.all()
+#citations = Citation.query.all()
 
-for c in citations:
-    db.session.delete(c)
+#for c in citations:
+#    db.session.delete(c)
 
-db.session.commit()
+#db.session.commit()
 
-#u = User.query.get(1)
+u = User.query.get(1)
 
-#for i in range(1,len(Data)):
+for i in range(1,len(Data)):
 
-#    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
-#    db.session.add(citation)
-#    db.session.commit()
+    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
+    db.session.add(citation)
+    db.session.commit()
 
 
-#print(Citation.query.all())
+print(Citation.query.all())
 
 #db.session.commit()
 

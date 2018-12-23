@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{f5b9451a-f221-4bed-ad8c-e60483d953ed}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>microblog.py</StartupFile>
+    <StartupFile>Change_Data.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -25,6 +25,7 @@
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\login.html" />
     <Content Include="app\templates\register.html" />
+    <Content Include="Data" />
     <Content Include="migrations\alembic.ini" />
     <Content Include="requirements.txt" />
   </ItemGroup>

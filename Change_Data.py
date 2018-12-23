@@ -1,56 +1,79 @@
 from app import db
 from app.models import User, Citation
-
 import pickle
-
-with open('Data_Old','rb') as fichier:
-        mon_depickler = pickle.Unpickler(fichier)
-        Data_Old=mon_depickler.load()
-
-
-Data=list()
-
-
-
-
-
-
-
-#import csv
-import pickle
-from citation import citation
-
-from datetime import date
 import pandas as pd
-import matplotlib.pyplot as plt
 
-with open('Data_Old','rb') as fichier:
+with open('Data','rb') as fichier:
         mon_depickler = pickle.Unpickler(fichier)
-        Data_Old=mon_depickler.load()
+        Data=mon_depickler.load()
 
 
-# creation of the main list of citation
-Data=list()
-Emphasis="Normal"
+users = User.query.all()
+for u in users:
+    db.session.delete(u)
 
-Date=date(2018,12,1)
+citations = Citation.query.all()
+
+for c in citations:
+    db.session.delete(c)
+
+db.session.commit()
+
+#u = User.query.get(1)
+
+#for i in range(1,len(Data)):
+
+#    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
+#    db.session.add(citation)
+#    db.session.commit()
 
 
-for i in range(0,len(Data_Old)):
+#print(Citation.query.all())
 
-     HistListe=[[Date,Data_Old[i].SRR,Data_Old[i].TRT]]
-     Historique=pd.DataFrame(HistListe, columns=['Date','SRR','TRT'])
-     Historique["Date"]=pd.to_datetime(Historique["Date"])
-     Historique.set_index(["Date"],inplace=True)
+#db.session.commit()
 
-     Data.append(citation(Data_Old[i].number,Data_Old[i].text,Data_Old[i].SRR,Data_Old[i].TRT,Emphasis,Historique))
+#citations = Citation.query.all()
+#for i in citations:
+#    db.session.delete(i)
 
-with open('Data','wb') as fichier:
-    mon_pickler = pickle.Pickler(fichier)
-    mon_pickler.dump(Data)
+#db.session.commit()
 
-#show the result
-print(Data)
+
+##import csv
+#import pickle
+#from citation import citation
+
+#from datetime import date
+#import pandas as pd
+#import matplotlib.pyplot as plt
+
+#with open('Data_Old','rb') as fichier:
+#        mon_depickler = pickle.Unpickler(fichier)
+#        Data_Old=mon_depickler.load()
+
+
+## creation of the main list of citation
+#Data=list()
+#Emphasis="Normal"
+
+#Date=date(2018,12,1)
+
+
+#for i in range(0,len(Data_Old)):
+
+#     HistListe=[[Date,Data_Old[i].SRR,Data_Old[i].TRT]]
+#     Historique=pd.DataFrame(HistListe, columns=['Date','SRR','TRT'])
+#     Historique["Date"]=pd.to_datetime(Historique["Date"])
+#     Historique.set_index(["Date"],inplace=True)
+
+#     Data.append(citation(Data_Old[i].number,Data_Old[i].text,Data_Old[i].SRR,Data_Old[i].TRT,Emphasis,Historique))
+
+#with open('Data','wb') as fichier:
+#    mon_pickler = pickle.Pickler(fichier)
+#    mon_pickler.dump(Data)
+
+##show the result
+#print(Data)
 
 #print(Data[1].Historique)
 

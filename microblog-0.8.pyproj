@@ -33,6 +33,8 @@
     <Compile Include="app\models.py" />
     <Compile Include="app\routes.py" />
     <Compile Include="app\__init__.py" />
+    <Compile Include="Change_Data.py" />
+    <Compile Include="citation.py" />
     <Compile Include="config.py" />
     <Compile Include="microblog.py" />
     <Compile Include="migrations\env.py" />

@@ -29,6 +29,7 @@
     <Content Include="Data" />
     <Content Include="migrations\alembic.ini" />
     <Content Include="requirements.txt" />
+    <Content Include="app\templates\_post.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\forms.py" />

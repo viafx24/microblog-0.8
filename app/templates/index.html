@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+<h1>Salut, {{ current_user.username }}!</h1>
+
     {% for citation in citations %}
-    <div><p>{{ citation.number }}: {{ citation.text}}</p></div>
+        {% include '_post.html' %}
     {% endfor %}
+
 {% endblock %}

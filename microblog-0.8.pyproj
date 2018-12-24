@@ -25,6 +25,7 @@
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\login.html" />
     <Content Include="app\templates\register.html" />
+    <Content Include="base.html" />
     <Content Include="Data" />
     <Content Include="migrations\alembic.ini" />
     <Content Include="requirements.txt" />

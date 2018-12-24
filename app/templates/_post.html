@@ -1,26 +1,20 @@
-﻿<table class="table table-striped table-bordered table-hover table-condensed">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Citation</th>
-            <th>SRR</th>
-            <th>TRT</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <p>{{ citation.number }}:</p>
-            </td>
-            <td>
-                <p>{{ citation.text}}</p>
-            </td>
-            <td>
-                <p>{{ citation.SRR}}</p>
-            </td>
-            <td>
-                <p>{{ citation.TRT}}</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+﻿<div class="container">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Citation</th>
+                <th>SRR</th>
+                <th>TRT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ citation.number }}:</td>
+                <td>{{ citation.text }}</td>
+                <td>{{ citation.SRR }}</td>
+                <td>{{ citation.TRT }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

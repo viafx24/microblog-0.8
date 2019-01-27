@@ -10,16 +10,7 @@ from app.models import User, Citation
 @app.route('/index')
 @login_required
 def index():
-    #posts = [
-    #    {
-    #        'author': {'username': 'John'},
-    #        'body': 'Beautiful day in Portland!'
-    #    },
-    #    {
-    #        'author': {'username': 'Susan'},
-    #        'body': 'The Avengers movie was so cool!'
-    #    }
-    #]
+
     citations=Citation.query.all()
 
     return render_template('index.html', title='Home', citations=citations)

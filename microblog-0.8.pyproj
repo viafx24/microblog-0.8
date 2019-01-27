@@ -27,6 +27,7 @@
     <Content Include="app\templates\register.html" />
     <Content Include="base.html" />
     <Content Include="Data" />
+    <Content Include="app\static\app.js" />
     <Content Include="migrations\alembic.ini" />
     <Content Include="requirements.txt" />
     <Content Include="app\templates\_post.html" />
@@ -49,6 +50,7 @@
     <Folder Include="app\templates" />
     <Folder Include="migrations" />
     <Folder Include="migrations\versions" />
+    <Folder Include="app\static\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

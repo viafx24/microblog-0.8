@@ -3,6 +3,8 @@
 {% block app_content %}
 <h1>Salut, {{ current_user.username }}!</h1>
 
+<button type="button" id="Hide">Hide!</button>
+
 <div class="container">
     <table class="table table-striped table-bordered table-hover table-condensed">
         <thead>
@@ -21,11 +23,27 @@
     </table>
 </div>
 
+{% endblock %}
 
 
+{% block scripts %}
+{{ super() }}
 
+<script>
+        // ...
 
+    $(function () {
+            // write start up code here
+        $('#Hide').click(function () {
+            $('span.text').hide();
+        });
+       
+        
+    });
+</script>
 
-    
 
 {% endblock %}
+
+
+

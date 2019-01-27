@@ -1,12 +1,11 @@
-$(function () {
-    // write start up code here
 
-    var A = {{ citations }
-};
+    $(function () {
+        // write start up code here
 
-alert(A);
 
-var B =
+        alert("test");
+
+   
 
         //$('#Hide').click(function () {
         //    $('span.text').hide();

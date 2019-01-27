@@ -28,39 +28,7 @@
 
 {% block scripts %}
 {{ super() }}
-
-{#<!--<script {{ url_for('static', filename='static/app.js')}}></script>
-<script>
-    MainScript({{ citations| tojson }});
-    $(function () {
-
-
-
-</script>-->#}
-
-
-
-<script>
-        // ...
-
-    $(function () {
-        // write start up code here
-
-        var A = "{{citations[100].number}}";
-
-        alert(A);
-
-        
-
-        //$('#Hide').click(function () {
-        //    $('span.text').hide();
-        //});
-
-
-    });
-</script>
-
-
+<script src={{ url_for('static', filename='app.js')}}></script>
 {% endblock %}
 
 

@@ -9,7 +9,8 @@
        min="1" max="300">
 
 
-<button type="button" id="GetData">GetData</button>
+<button type="button" id="Run">Run</button>
+<button type="button" id="Suivant">Suivant</button>
 
 <h2 id="ShowCitation"></h2>
 <!--<div class="container">
@@ -38,24 +39,35 @@
 
     $(function () {
         // write start up code here
-
-        $("#GetData").click(function () {
+        var iteration = 1
+        var citations
+        $("#Run").click(function () {
 
             //
-            variable =Number($('#numbercitation').val());
+            variable = Number($('#numbercitation').val());
+            
             $.ajax({
                 url: '/RequestCitations',
                 type: 'POST',
                 data: JSON.stringify(variable),
-                success: function (data) {
-                    $("#ShowCitation").html(data[variable]);
+                success: function (dicts) {
+                    citations = dicts;
+                    $("#ShowCitation").html(citations[iteration]);
                 }
             });
+        });
+        $("#Suivant").click(function() {
+                    iteration = iteration + 1;
+                    $("#ShowCitation").html(citations[iteration]);
+                    
+        });       
+
+            
 
             //$.getJSON('/RequestCitations', 2, function (data) {
             //    $("#ShowCitation").html(data["text"]);
             //});
-        });
+        
 
         //$('#Hide').click(function () {
         //    $('span.text').hide();

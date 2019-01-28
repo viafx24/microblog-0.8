@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import render_template, flash, redirect, url_for, request, jsonify, json
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
@@ -16,10 +16,24 @@ def index():
     return render_template('index.html', title='Home', citations=citations)
 
 
-@app.route('/RequestCitations')
+@app.route('/RequestCitations', methods=['POST'])
 def send_citations():
+    
+    variable = int(request.get_data().decode('utf8'))
+
     citations=Citation.query.all()
-    return jsonify(citations[64].text)
+
+    dicts = {0:'zero'}
+    keys = range(1,int(variable)+1)
+
+    for i in keys:
+             dicts[i] = citations[i-1].text
+
+    print(dicts)
+    #return jsonify({'text':citations[variable].text,
+    #                'number':citations[variable].number})
+    return jsonify(dicts)
+    #return json.dumps([dict(citation) for citation in citations])
 
 
 

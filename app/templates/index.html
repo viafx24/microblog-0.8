@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-<h1>Salut, {{ current_user.username }}!</h1>
+<!--<h1>Salut, ##{{ current_user.username }}!</h1>-->
+
+<label for="numbercitation">Choisir un numero de citation:</label>
+
+<input type="number" id="numbercitation" name="numbercitation"
+       min="1" max="300">
+
 
 <button type="button" id="GetData">GetData</button>
 
-<div class="container">
+<h2 id="ShowCitation"></h2>
+<!--<div class="container">
     <table class="table table-striped table-bordered table-hover table-condensed">
         <thead>
             <tr>
@@ -21,8 +28,7 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
-
+</div>-->
 {% endblock %}
 
 
@@ -36,11 +42,19 @@
         $("#GetData").click(function () {
 
             //
-
-            $.getJSON('/RequestCitations', function (data) {
-                alert('test');
-                alert(data);
+            variable =Number($('#numbercitation').val());
+            $.ajax({
+                url: '/RequestCitations',
+                type: 'POST',
+                data: JSON.stringify(variable),
+                success: function (data) {
+                    $("#ShowCitation").html(data[variable]);
+                }
             });
+
+            //$.getJSON('/RequestCitations', 2, function (data) {
+            //    $("#ShowCitation").html(data["text"]);
+            //});
         });
 
         //$('#Hide').click(function () {

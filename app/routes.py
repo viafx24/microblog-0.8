@@ -21,15 +21,17 @@ def send_citations():
     
     variable = int(request.get_data().decode('utf8'))
 
-    citations=Citation.query.all()
-
+    #citations=Citation.query.all()
+    citations=Citation.query.order_by(Citation.SRR).order_by(Citation.TRT.desc()).all()
+    #citations=Citation.query.order_by(Citation.TRT.desc()).order_by(Citation.SRR).all()
+    print(citations)
     dicts = {0:'zero'}
     keys = range(1,int(variable)+1)
 
     for i in keys:
-             dicts[i] = citations[i-1].text
+             dicts[citations[i].number] = citations[i-1].text
 
-    print(dicts)
+    #print(dicts)
     #return jsonify({'text':citations[variable].text,
     #                'number':citations[variable].number})
     return jsonify(dicts)

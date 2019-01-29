@@ -27,11 +27,12 @@ def send_citations():
     print(citations)
     #dicts = {0:'zero'}
     dicts = {}
-    #keys = range(1,int(variable)+1)
-    keys=range(int(variable))
+    keys = range(1,int(variable)+1)
+    #keys=range(int(variable))
 
     for i in keys:
-             dicts[citations[i].number] = citations[i].text
+             #dicts[citations[i].number] = citations[i].text
+             dicts[i]=[citations[i-1].number,citations[i-1].text,citations[i-1].SRR,citations[i-1].TRT]
 
     print(dicts)
     #return jsonify({'text':citations[variable].text,

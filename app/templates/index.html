@@ -46,7 +46,7 @@
         $("#Run").click(function () {
 
             //
-            iteration=0
+            iteration=1
             variable = Number($('#numbercitation').val());
             
             $.ajax({
@@ -56,18 +56,20 @@
                 success: function (dicts) {
                     citations = dicts;
                     //$("#ShowCitation").html(citations.keys()[iteration]);
-                    $("#ShowCitation").html(Object.keys(citations)[iteration]);
+                    $("#ShowCitation").html(citations[iteration][0]);
                 }
             });
         });
         $("#Plusone").click(function() {
-                    
-            $("#ShowCitation").html(Object.values(citations)[iteration]);
+
+            $("#ShowCitation").html(citations[iteration][1]);
+            //$("#ShowCitation").html(Object.values(citations)[iteration]);
                     
         });     
         $("#Suivant").click(function () {
             iteration = iteration + 1;
-            $("#ShowCitation").html(Object.keys(citations)[iteration]);
+            //$("#ShowCitation").html(citations.keys()[iteration]);
+            $("#ShowCitation").html(citations[iteration][0]);
 
         });
 

@@ -9,8 +9,10 @@
        min="1" max="300">
 
 
-<button type="button" id="Run">Run</button>
+<button type="button" id="Run">Load</button>
+<button type="button" id="Plusone">+1</button>
 <button type="button" id="Suivant">Suivant</button>
+<button type="button" id="Minusone">-1</button>
 
 <h2 id="ShowCitation"></h2>
 <!--<div class="container">
@@ -39,11 +41,12 @@
 
     $(function () {
         // write start up code here
-        var iteration = 1
+        var iteration
         var citations
         $("#Run").click(function () {
 
             //
+            iteration=1
             variable = Number($('#numbercitation').val());
             
             $.ajax({
@@ -52,15 +55,21 @@
                 data: JSON.stringify(variable),
                 success: function (dicts) {
                     citations = dicts;
-                    $("#ShowCitation").html(citations[iteration]);
+                    //$("#ShowCitation").html(citations.keys()[iteration]);
+                    $("#ShowCitation").html(Object.keys(citations)[iteration]);
                 }
             });
         });
-        $("#Suivant").click(function() {
-                    iteration = iteration + 1;
+        $("#Plusone").click(function() {
+                    
                     $("#ShowCitation").html(citations[iteration]);
                     
-        });       
+        });     
+        $("#Suivant").click(function () {
+            iteration = iteration + 1;
+            $("#ShowCitation").html(Object.keys(citations)[iteration]);
+
+        });
 
             
 

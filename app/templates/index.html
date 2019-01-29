@@ -43,12 +43,14 @@
         // write start up code here
         var iteration
         var citations
+        //var firstTimestamp
+
         $("#Run").click(function () {
 
-            //
-            var iteration=1
-            var variable = Number($('#numbercitation').val());
-            var firstTimestamp
+          
+                iteration = 1;
+                variable = Number($('#numbercitation').val());
+            
             
             $.ajax({
                 url: '/RequestCitations',

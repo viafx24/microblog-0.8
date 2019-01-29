@@ -46,7 +46,7 @@
         $("#Run").click(function () {
 
             //
-            iteration=1
+            iteration=0
             variable = Number($('#numbercitation').val());
             
             $.ajax({
@@ -62,7 +62,7 @@
         });
         $("#Plusone").click(function() {
                     
-                    $("#ShowCitation").html(citations[iteration]);
+            $("#ShowCitation").html(Object.values(citations)[iteration]);
                     
         });     
         $("#Suivant").click(function () {

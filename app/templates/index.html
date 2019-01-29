@@ -46,8 +46,9 @@
         $("#Run").click(function () {
 
             //
-            iteration=1
-            variable = Number($('#numbercitation').val());
+            var iteration=1
+            var variable = Number($('#numbercitation').val());
+            var firstTimestamp
             
             $.ajax({
                 url: '/RequestCitations',
@@ -59,10 +60,15 @@
                     $("#ShowCitation").html(citations[iteration][0]);
                 }
             });
+
+            //firstTimestamp = new Date().getTime(); 
             $('#Suivant').attr("disabled", "disabled")
         });
         $("#Plusone").click(function() {
 
+            //var secondTimestamp = new Date().getTime(); // On récupère le timestamp après l'exécution
+            //NewTRT = secondTimestamp - firstTimestamp; // On fait la soustraction
+            //alert(NewTRT)
             CurrentCitationNumber = citations[iteration][0]
             NewSRR = parseInt(citations[iteration][2]) + 1
             citations[iteration][2]=NewSRR.toString()
@@ -70,7 +76,7 @@
             $.ajax({
                 url: '/SaveTrainingResults',
                 type: 'POST',
-                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR }),
+                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR/*, 'NewTRT': NewTRT*/}),
                 success: function (saved) {
                     alert(saved);
                 }     
@@ -81,7 +87,8 @@
 
         $("#Suivant").click(function () {
             iteration = iteration + 1;
-            //$("#ShowCitation").html(citations.keys()[iteration]);
+            //firstTimestamp = new Date().getTime(); 
+            $("#ShowCitation").html(citations.keys()[iteration]);
             $("#ShowCitation").html(citations[iteration][0]);
             $('#Suivant').attr("disabled", "disabled")
         });

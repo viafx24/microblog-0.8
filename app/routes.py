@@ -51,16 +51,17 @@ def SaveTrainingResults():
     print(ReceivedDict['CurrentCitationNumber'])
     print(int(ReceivedDict['CurrentCitationNumber']))
     print(citations[int(ReceivedDict['CurrentCitationNumber'])].text)
-    PreviousSRR=citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR
+    #PreviousSRR=citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR
 
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']
+    #citations[int(ReceivedDict['CurrentCitationNumber'])-1].TRT=ReceivedDict['NewTRT']
     db.session.commit()
 
     citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
     print(citation.text)
-    print(citation.SRR)
+    #print(citation.SRR)
 
-    return jsonify([PreviousSRR,citation.SRR])
+    return jsonify(citation.SRR)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

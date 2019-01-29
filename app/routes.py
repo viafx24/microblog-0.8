@@ -17,7 +17,7 @@ def index():
 
 
 @app.route('/RequestCitations', methods=['POST'])
-def send_citations():
+def RequestCitations():
     
     variable = int(request.get_data().decode('utf8'))
 
@@ -35,12 +35,32 @@ def send_citations():
              dicts[i]=[citations[i-1].number,citations[i-1].text,citations[i-1].SRR,citations[i-1].TRT]
 
     print(dicts)
+    print(dicts[1][2])
     #return jsonify({'text':citations[variable].text,
     #                'number':citations[variable].number})
     return jsonify(dicts)
     #return json.dumps([dict(citation) for citation in citations])
 
+@app.route('/SaveTrainingResults', methods=['POST'])
+def SaveTrainingResults():
 
+    citations=Citation.query.all()
+    ReceivedDict = request.get_data().decode('utf8')
+    ReceivedDict=json.loads(ReceivedDict)
+    #print(ReceivedDict[0])
+    print(ReceivedDict['CurrentCitationNumber'])
+    print(int(ReceivedDict['CurrentCitationNumber']))
+    print(citations[int(ReceivedDict['CurrentCitationNumber'])].text)
+    PreviousSRR=citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR
+
+    citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']
+    db.session.commit()
+
+    citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
+    print(citation.text)
+    print(citation.SRR)
+
+    return jsonify([PreviousSRR,citation.SRR])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

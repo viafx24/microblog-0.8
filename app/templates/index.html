@@ -59,30 +59,32 @@
                     $("#ShowCitation").html(citations[iteration][0]);
                 }
             });
+            $('#Suivant').attr("disabled", "disabled")
         });
         $("#Plusone").click(function() {
 
+            CurrentCitationNumber = citations[iteration][0]
+            NewSRR = parseInt(citations[iteration][2]) + 1
+            citations[iteration][2]=NewSRR.toString()
+            
+            $.ajax({
+                url: '/SaveTrainingResults',
+                type: 'POST',
+                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR }),
+                success: function (saved) {
+                    alert(saved);
+                }     
+            });
             $("#ShowCitation").html(citations[iteration][1]);
-            //$("#ShowCitation").html(Object.values(citations)[iteration]);
-                    
-        });     
+            $('#Suivant').removeAttr('disabled');
+        });
+
         $("#Suivant").click(function () {
             iteration = iteration + 1;
             //$("#ShowCitation").html(citations.keys()[iteration]);
             $("#ShowCitation").html(citations[iteration][0]);
-
+            $('#Suivant').attr("disabled", "disabled")
         });
-
-            
-
-            //$.getJSON('/RequestCitations', 2, function (data) {
-            //    $("#ShowCitation").html(data["text"]);
-            //});
-        
-
-        //$('#Hide').click(function () {
-        //    $('span.text').hide();
-        //});
 
     });
 </script>

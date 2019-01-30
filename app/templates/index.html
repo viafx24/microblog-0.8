@@ -10,11 +10,22 @@
 
 
 <button type="button" id="Run">Load</button>
-<button type="button" id="Plusone">+1</button>
-<button type="button" id="Suivant">Suivant</button>
-<button type="button" id="Minusone">-1</button>
 
-<h2 id="ShowCitation"></h2>
+<div style="height:300px; display: table-cell; vertical-align: middle">
+    <h2 style="text-align: justify" ; id="ShowCitation"></h2>
+</div>
+
+<br />
+<br />
+<br />
+<footer>
+
+    <button type="button" style="height:100px;width:33%" id="Plusone">+1</button>
+    <button type="button" style="height:100px;width:33%" id="Suivant">Suivant</button>
+    <button type="button" style="height:100px;width:33%" id="Minusone">-1</button>
+
+
+</footer>
 <!--<div class="container">
     <table class="table table-striped table-bordered table-hover table-condensed">
         <thead>
@@ -43,7 +54,8 @@
         // write start up code here
         var iteration
         var citations
-        //var firstTimestamp
+        var firstTimestamp
+        var secondTimestamp
 
         $("#Run").click(function () {
 
@@ -63,14 +75,13 @@
                 }
             });
 
-            //firstTimestamp = new Date().getTime(); 
+            firstTimestamp = new Date().getTime(); 
             $('#Suivant').attr("disabled", "disabled")
         });
         $("#Plusone").click(function() {
 
-            //var secondTimestamp = new Date().getTime(); // On récupère le timestamp après l'exécution
-            //NewTRT = secondTimestamp - firstTimestamp; // On fait la soustraction
-            //alert(NewTRT)
+            secondTimestamp = new Date().getTime(); 
+            NewTRT = Math.floor((secondTimestamp - firstTimestamp)/1000); 
             CurrentCitationNumber = citations[iteration][0]
             NewSRR = parseInt(citations[iteration][2]) + 1
             citations[iteration][2]=NewSRR.toString()
@@ -78,7 +89,7 @@
             $.ajax({
                 url: '/SaveTrainingResults',
                 type: 'POST',
-                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR/*, 'NewTRT': NewTRT*/}),
+                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR, 'NewTRT': NewTRT}),
                 success: function (saved) {
                     alert(saved);
                 }     
@@ -89,8 +100,8 @@
 
         $("#Suivant").click(function () {
             iteration = iteration + 1;
-            //firstTimestamp = new Date().getTime(); 
-            $("#ShowCitation").html(citations.keys()[iteration]);
+            firstTimestamp = new Date().getTime(); 
+            //$("#ShowCitation").html(citations.keys()[iteration]);
             $("#ShowCitation").html(citations[iteration][0]);
             $('#Suivant').attr("disabled", "disabled")
         });

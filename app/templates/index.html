@@ -11,13 +11,22 @@
 
 <button type="button" id="Run">Load</button>
 
-<div style="height:300px; display: table-cell; vertical-align: middle">
-    <h2 style="text-align: justify" ; id="ShowCitation"></h2>
+<!--<div style="height:300px; display: table-cell; vertical-align: middle; text-align: center">
+    <h2 id="ShowCitation"></h2>
+</div>-->
+
+<div style="height:300px; padding: 70px 0; text-align: justify">
+    <h2 id="ShowCitation"></h2>
 </div>
 
-<br />
-<br />
-<br />
+
+
+<div style="height:50px;">
+    <h4 id="ShowSRRandTRT"> </h4>
+</div>
+
+
+<!--<br />-->
 <footer>
 
     <button type="button" style="height:100px;width:33%" id="Plusone">+1</button>
@@ -59,51 +68,59 @@
 
         $("#Run").click(function () {
 
-          
-                iteration = 1;
-                variable = Number($('#numbercitation').val());
-            
-            
+
+            iteration = 1;
+            variable = Number($('#numbercitation').val());
+
+
             $.ajax({
                 url: '/RequestCitations',
                 type: 'POST',
                 data: JSON.stringify(variable),
                 success: function (dicts) {
                     citations = dicts;
-                    //$("#ShowCitation").html(citations.keys()[iteration]);
+                    $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" });
                     $("#ShowCitation").html(citations[iteration][0]);
+
                 }
             });
 
-            firstTimestamp = new Date().getTime(); 
+            firstTimestamp = new Date().getTime();
             $('#Suivant').attr("disabled", "disabled")
+            $("#ShowSRRandTRT").html('')
         });
-        $("#Plusone").click(function() {
+        $("#Plusone").click(function () {
 
-            secondTimestamp = new Date().getTime(); 
-            NewTRT = Math.floor((secondTimestamp - firstTimestamp)/1000); 
+            secondTimestamp = new Date().getTime();
+            NewTRT = Math.floor((secondTimestamp - firstTimestamp) / 1000);
             CurrentCitationNumber = citations[iteration][0]
             NewSRR = parseInt(citations[iteration][2]) + 1
-            citations[iteration][2]=NewSRR.toString()
-            
+            citations[iteration][2] = NewSRR.toString()
+
             $.ajax({
                 url: '/SaveTrainingResults',
                 type: 'POST',
-                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR, 'NewTRT': NewTRT}),
+                data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR, 'NewTRT': NewTRT }),
                 success: function (saved) {
-                    alert(saved);
-                }     
+                    //alert(saved);
+                    $("#ShowSRRandTRT").html('New SRR= ' + saved[0] + '; New TRT= ' + saved[1])
+
+                }
             });
             $("#ShowCitation").html(citations[iteration][1]);
+            $("#ShowCitation").removeAttr('style');
             $('#Suivant').removeAttr('disabled');
+
         });
 
         $("#Suivant").click(function () {
             iteration = iteration + 1;
-            firstTimestamp = new Date().getTime(); 
+            firstTimestamp = new Date().getTime();
             //$("#ShowCitation").html(citations.keys()[iteration]);
             $("#ShowCitation").html(citations[iteration][0]);
+            $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
             $('#Suivant').attr("disabled", "disabled")
+            $("#ShowSRRandTRT").html('')
         });
 
     });

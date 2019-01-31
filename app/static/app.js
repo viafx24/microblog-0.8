@@ -4,18 +4,42 @@ $(function () {
     var citations
     var firstTimestamp
     var secondTimestamp
+    var count
+
+
+    $("#begincitation").change(function () {
+        numbermax = 300 - $("#begincitation").val() + 1
+        $("#numbercitation").attr("max", numbermax)
+        if ($("#numbercitation").val() > numbermax) {
+            $("#numbercitation").val(numbermax)
+        }
+    });
+
+    $("#numbercitation").change(function () {
+        numbermax = 300 - $("#numbercitation").val() + 1
+        $("#begincitation").attr("max", numbermax)
+        if ($("#begincitation").val() > numbermax) {
+            $("#begincitation").val(numbermax)
+        }
+    });
 
     $("#Run").click(function () {
 
-
         iteration = 1;
-        variable = Number($('#numbercitation').val());
+        BeginCitation = $('#begincitation').val();
+        NumberCitation = $('#numbercitation').val();
+        TypeOfSort = $('#typeofsort').val();
 
+        //problem with the input number and step 10 that doesn't work if min is not equal to zero
+        if (NumberCitation == 0) {
+        alert("Ne pas choisir zero")
+        return; //
+        }
 
         $.ajax({
             url: '/RequestCitations',
             type: 'POST',
-            data: JSON.stringify(variable),
+            data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort]),
             success: function (dicts) {
                 citations = dicts;
                 $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" });
@@ -32,7 +56,9 @@ $(function () {
     $("#Plusone").click(function () {
 
         secondTimestamp = new Date().getTime();
-        NewTRT = Math.floor((secondTimestamp - firstTimestamp) / 1000);
+        NewTRT = (secondTimestamp - firstTimestamp) / 1000;
+        NewTRT = parseFloat(NewTRT).toFixed(1);
+
         CurrentCitationNumber = citations[iteration][0]
         NewSRR = parseInt(citations[iteration][2]) + 1
         citations[iteration][2] = NewSRR.toString()
@@ -49,14 +75,19 @@ $(function () {
         });
         $("#ShowCitation").html(citations[iteration][1]);
         $("#ShowCitation").removeAttr('style');
-        $('#Suivant').removeAttr('disabled');
+
+        count = Object.keys(citations).length;
+        if (iteration < count) {
+            $('#Suivant').removeAttr('disabled');
+        }
+        
 
     });
 
     $("#Suivant").click(function () {
+
         iteration = iteration + 1;
         firstTimestamp = new Date().getTime();
-        //$("#ShowCitation").html(citations.keys()[iteration]);
         $("#ShowCitation").html(citations[iteration][0]);
         $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
         $('#Suivant').attr("disabled", "disabled")

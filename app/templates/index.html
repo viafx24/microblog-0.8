@@ -4,11 +4,34 @@
 
 <label for="begincitation">Choisir une citation de départ:</label>
 <input type="number" id="begincitation" name="begincitation"
-       min="1" max="300" value="1">
+       min="1" max="300" value="1" >
 
 <label for="numbercitation">Choisir un nombre de citation:</label>
 <input type="number" id="numbercitation" name="numbercitation"
-       min="1" max="300" value="10">
+       min="0" max="300"  value="10" step="10">
+
+<label for="typeofsort">Mode de tri:</label>
+<select id="typeofsort">
+    <option value="SRR/TRT">SRR/TRT</option>
+    <option value="TRT">TRT</option>
+    <option value="SRR">SRR</option>
+    <option value="order">order</option>
+    <option value="rand">rand</option>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <button type="button" id="Run">Load</button>
 

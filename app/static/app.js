@@ -54,13 +54,36 @@ $(function () {
     });
 
     $("#Plusone").click(function () {
+        NewSRR = parseInt(citations[iteration][2]) + 1;
+        ShowCitation()
+    });
 
+    $("#Minusone").click(function () {
+        NewSRR = parseInt(citations[iteration][2]) - 1;
+        ShowCitation()
+    });
+
+
+
+
+    $("#Suivant").click(function () {
+
+        iteration = iteration + 1;
+        firstTimestamp = new Date().getTime();
+        $("#ShowCitation").html(citations[iteration][0]);
+        $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
+        $('#Suivant').attr("disabled", "disabled")
+        $("#ShowSRRandTRT").html('')
+    });
+
+
+    function  ShowCitation() {
         secondTimestamp = new Date().getTime();
         NewTRT = (secondTimestamp - firstTimestamp) / 1000;
         NewTRT = parseFloat(NewTRT).toFixed(1);
 
         CurrentCitationNumber = citations[iteration][0]
-        NewSRR = parseInt(citations[iteration][2]) + 1
+
         citations[iteration][2] = NewSRR.toString()
 
         $.ajax({
@@ -80,18 +103,6 @@ $(function () {
         if (iteration < count) {
             $('#Suivant').removeAttr('disabled');
         }
-        
-
-    });
-
-    $("#Suivant").click(function () {
-
-        iteration = iteration + 1;
-        firstTimestamp = new Date().getTime();
-        $("#ShowCitation").html(citations[iteration][0]);
-        $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
-        $('#Suivant').attr("disabled", "disabled")
-        $("#ShowSRRandTRT").html('')
-    });
+    }
 
 });

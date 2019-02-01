@@ -26,7 +26,11 @@
     /*height: 300px;*/
 }
 
-
+@media screen and (max-width: 800px) {
+    h2 {
+        font-size: 20px;
+    }
+}
 
 /*#Minusone {
     height: 100px;

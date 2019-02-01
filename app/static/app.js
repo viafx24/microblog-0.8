@@ -42,15 +42,10 @@ $(function () {
             data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort]),
             success: function (dicts) {
                 citations = dicts;
-                $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" });
-                $("#ShowCitation").html(citations[iteration][0]);
-
+                ShowNumber();
             }
         });
 
-        firstTimestamp = new Date().getTime();
-        $('#Suivant').attr("disabled", "disabled")
-        $("#ShowSRRandTRT").html('')
     });
 
     $("#Plusone").click(function () {
@@ -64,14 +59,19 @@ $(function () {
     });
 
     $("#Suivant").click(function () {
-
         iteration = iteration + 1;
+        ShowNumber();
+    });
+
+    function ShowNumber() {
+
         firstTimestamp = new Date().getTime();
         $("#ShowCitation").html(citations[iteration][0]);
         $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
         $('#Suivant').attr("disabled", "disabled")
         $("#ShowSRRandTRT").html('')
-    });
+
+    }
 
 
     function  ShowCitation() {
@@ -100,6 +100,13 @@ $(function () {
         if (iteration < count) {
             $('#Suivant').removeAttr('disabled');
         }
+
+        var NumberLetter = citations[iteration][1].length
+        if (NumberLetter > 500) {
+            $("#ShowCitation").css("font-size", "20px")
+        }
+
+
     }
 
 });

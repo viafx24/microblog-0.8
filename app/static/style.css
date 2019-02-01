@@ -1,0 +1,39 @@
+﻿body {}
+
+#Plusone, #Minusone, #Suivant {
+    height: 100px;
+    width: 33%
+}
+
+#IDShowCitation {
+    /*height: 300px;
+    padding: 70px 0;*/
+    text-align: justify
+}
+
+#IDShowSRRandTRT {
+    height:50px;
+}
+
+.parent {
+    display: flex; /* contexte sur le parent */
+    height: 300px;
+}
+
+.enfant {
+    margin: auto; /* eh oui, tout bêtement */
+    text-align: justify;
+    /*height: 300px;*/
+}
+
+
+
+/*#Minusone {
+    height: 100px;
+    width: 33%
+}
+
+#Suivant {
+    height: 100px;
+    width: 33%
+}*/

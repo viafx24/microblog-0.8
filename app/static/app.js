@@ -63,9 +63,6 @@ $(function () {
         ShowCitation()
     });
 
-
-
-
     $("#Suivant").click(function () {
 
         iteration = iteration + 1;

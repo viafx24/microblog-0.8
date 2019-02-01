@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
 {% block app_content %}
 
 <label for="begincitation">Choisir une citation de départ:</label>
 <input type="number" id="begincitation" name="begincitation"
-       min="1" max="300" value="1" >
+       min="1" max="300" value="1">
 
 <label for="numbercitation">Choisir un nombre de citation:</label>
 <input type="number" id="numbercitation" name="numbercitation"
-       min="0" max="300"  value="10" step="10">
+       min="0" max="300" value="10" step="10">
 
 <label for="typeofsort">Mode de tri:</label>
 <select id="typeofsort">
@@ -21,19 +26,36 @@
 
 <button type="button" id="Run">Load</button>
 
-<div style="height:300px; padding: 70px 0; text-align: justify">
+<div class="parent">
+    <div class="enfant"><h2 id="ShowCitation"></h2></div>
+</div>
+
+
+<!--<div id="IDShowCitation" style="text-align: justify">
     <h2 id="ShowCitation"></h2>
 </div>
 
-<div style="height:50px;">
+
+
+<div id="IDShowCitation" style="height:300px; padding: 70px 0; text-align: justify">
+    <h2 id="ShowCitation"></h2>
+</div>-->
+
+<div id="IDShowSRRandTRT">
     <h4 id="ShowSRRandTRT"> </h4>
 </div>
 
 <footer>
-    <button type="button" style="height:100px;width:33%" id="Plusone">+1</button>
+    <!--<button type="button" style="height:100px;width:33%" id="Plusone">+1</button>
     <button type="button" style="height:100px;width:33%" id="Suivant">Suivant</button>
-    <button type="button" style="height:100px;width:33%" id="Minusone">-1</button>
+    <button type="button" style="height:100px;width:33%" id="Minusone">-1</button>-->
+
+    <button type="button" id="Plusone">+1</button>
+    <button type="button" id="Suivant">Suivant</button>
+    <button type="button" id="Minusone">-1</button>
+
 </footer>
+
 
 {% endblock %}
 

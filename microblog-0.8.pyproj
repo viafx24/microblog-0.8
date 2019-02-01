@@ -21,6 +21,7 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app\static\style.css" />
     <Content Include="app\templates\base.html" />
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\login.html" />

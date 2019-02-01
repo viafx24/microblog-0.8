@@ -19,53 +19,39 @@ def index():
 @app.route('/RequestCitations', methods=['POST'])
 def RequestCitations():
     
-    #variable = int(request.get_data().decode('utf8'))
     ReceivedData = request.get_data().decode('utf8')
     ReceivedData=json.loads(ReceivedData)
-    print(ReceivedData[2])
 
     if ReceivedData[2]=="SRR/TRT":
         citations=Citation.query.order_by(Citation.SRR).order_by(Citation.TRT.desc()).filter(Citation.number>=int(ReceivedData[0])).all()
-        print(citations)
+        #print(citations)
     elif ReceivedData[2]=="TRT":
         citations=Citation.query.order_by(Citation.TRT.desc()).filter(Citation.number>=int(ReceivedData[0])).all()
-        print(citations)
+        #print(citations)
     elif ReceivedData[2]=="SRR":
         citations=Citation.query.order_by(Citation.SRR).filter(Citation.number>=int(ReceivedData[0])).all()
-        print(citations)
+        #print(citations)
     elif ReceivedData[2]=="order" or ReceivedData[2]=="rand" :
         citations=Citation.query.filter(Citation.number>=int(ReceivedData[0])).all()
-        print(citations)
-    #elif ReceivedData[2]=="rand":
+        #print(citations)
 
-        
-
-    #citations=Citation.query.all()
-    #citations=Citation.query.order_by(Citation.SRR).order_by(Citation.TRT.desc()).all()
-    #citations=Citation.query.order_by(Citation.TRT.desc()).order_by(Citation.SRR).all()
-    #print(citations)
-    #dicts = {0:'zero'}
     dicts = {}
-    #Begin=int(ReceivedData[0])
-    #print(Begin)
-    #End=int(ReceivedData[1])
-    #print(end)
 
+    # keys and keys2 allow me to deal with index of javascript dict (beginning at 1) and python indexes that
+    # begin at zero
     keys = range(1,int(ReceivedData[1])+1)
     keys2= range(0,int(ReceivedData[1]))
-    #keys=range(int(variable))
+
     if ReceivedData[2]=="rand":
-        keys2= sample(keys2, len(keys2))
+        keys2= sample(keys2, len(keys2)) # the sample function randomly shuffle the list keys2
 
     for i in keys:
         dicts[i]=[citations[keys2[i-1]].number,citations[keys2[i-1]].text,citations[keys2[i-1]].SRR,citations[keys2[i-1]].TRT]
         
-    print(dicts)
-    #print(dicts[1][2])
-    #return jsonify({'text':citations[variable].text,
-    #                'number':citations[variable].number})
+    #print(dicts)
+
     return jsonify(dicts)
-    #return json.dumps([dict(citation) for citation in citations])
+
 
 @app.route('/SaveTrainingResults', methods=['POST'])
 def SaveTrainingResults():
@@ -73,19 +59,14 @@ def SaveTrainingResults():
     citations=Citation.query.all()
     ReceivedDict = request.get_data().decode('utf8')
     ReceivedDict=json.loads(ReceivedDict)
-    #print(ReceivedDict[0])
-    print(ReceivedDict['CurrentCitationNumber'])
-    print(int(ReceivedDict['CurrentCitationNumber']))
-    print(citations[int(ReceivedDict['CurrentCitationNumber'])-1].text)
-    PreviousSRR=citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR
 
+    # the -1 in the two following line come from indexation from zero of python
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].TRT=ReceivedDict['NewTRT']
     db.session.commit()
 
+    # in the following line, there is no -1 because indexation of the query (bdd) begin from 1
     citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
-    print(citation.text)
-    #print(citation.SRR)
 
     return jsonify(citation.SRR,citation.TRT)
 

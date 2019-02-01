@@ -30,6 +30,7 @@
     <Content Include="Data" />
     <Content Include="app\static\app.js" />
     <Content Include="migrations\alembic.ini" />
+    <Content Include="Procfile" />
     <Content Include="requirements.txt" />
     <Content Include="app\templates\_post.html" />
   </ItemGroup>

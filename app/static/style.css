@@ -5,39 +5,28 @@
     width: 33%
 }
 
-#IDShowCitation {
-    /*height: 300px;
-    padding: 70px 0;*/
-    text-align: justify
+#Run {
+    height: 50px;
+    width: 20%
 }
+
 
 #IDShowSRRandTRT {
     height:50px;
 }
 
 .parent {
-    display: flex; /* contexte sur le parent */
-    height: 300px;
+    display: flex; 
+    height: 280px;
 }
 
 .enfant {
-    margin: auto; /* eh oui, tout bêtement */
+    margin: auto; 
     text-align: justify;
-    /*height: 300px;*/
 }
 
 @media screen and (max-width: 800px) {
-    h2 {
+    #ShowCitation {
         font-size: 20px;
     }
 }
-
-/*#Minusone {
-    height: 100px;
-    width: 33%
-}
-
-#Suivant {
-    height: 100px;
-    width: 33%
-}*/

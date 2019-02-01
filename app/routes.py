@@ -76,7 +76,7 @@ def SaveTrainingResults():
     #print(ReceivedDict[0])
     print(ReceivedDict['CurrentCitationNumber'])
     print(int(ReceivedDict['CurrentCitationNumber']))
-    print(citations[int(ReceivedDict['CurrentCitationNumber'])].text)
+    print(citations[int(ReceivedDict['CurrentCitationNumber'])-1].text)
     PreviousSRR=citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR
 
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']

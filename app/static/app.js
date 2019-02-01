@@ -40,10 +40,15 @@ $(function () {
             url: '/RequestCitations',
             type: 'POST',
             data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort]),
-            success: function (dicts) {
-                citations = dicts;
+            success: function (ReceivedDict) {
+                citations = ReceivedDict;
                 ShowNumber();
+            },
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                alert('Erreur - ' + errorMessage);
             }
+
         });
 
     });
@@ -73,40 +78,38 @@ $(function () {
 
     }
 
-
     function  ShowCitation() {
         secondTimestamp = new Date().getTime();
         NewTRT = (secondTimestamp - firstTimestamp) / 1000;
-        NewTRT = parseFloat(NewTRT).toFixed(1);
+        NewTRT = parseFloat(NewTRT).toFixed(1); 
 
-        CurrentCitationNumber = citations[iteration][0]
-
-        citations[iteration][2] = NewSRR.toString()
+        CurrentCitationNumber = citations[iteration][0];
+        citations[iteration][2] = NewSRR.toString(); /*important*/
 
         $.ajax({
             url: '/SaveTrainingResults',
             type: 'POST',
             data: JSON.stringify({ 'CurrentCitationNumber': CurrentCitationNumber, 'NewSRR': NewSRR, 'NewTRT': NewTRT }),
-            success: function (saved) {
-                //alert(saved);
-                $("#ShowSRRandTRT").html('New SRR= ' + saved[0] + '; New TRT= ' + saved[1])
-
+            success: function (ReceivedData) {
+                $("#ShowSRRandTRT").html('New SRR= ' + ReceivedData[0] + '; New TRT= ' + ReceivedData[1])
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                  alert('Erreur - ' + errorMessage);
             }
         });
         $("#ShowCitation").html(citations[iteration][1]);
         $("#ShowCitation").removeAttr('style');
 
+        // disabled button "suivant" when have passed all the citations
         count = Object.keys(citations).length;
         if (iteration < count) {
             $('#Suivant').removeAttr('disabled');
         }
-
+        // change the fontsize of ctiation text when the text is too long
         var NumberLetter = citations[iteration][1].length
         if (NumberLetter > 500) {
             $("#ShowCitation").css("font-size", "20px")
         }
-
-
     }
-
 });

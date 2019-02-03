@@ -56,7 +56,8 @@ def RequestCitations():
 @app.route('/SaveTrainingResults', methods=['POST'])
 def SaveTrainingResults():
 
-    citations=Citation.query.all()
+    citations=Citation.query.order_by(Citation.number).all()
+    print(citations)
     ReceivedDict = request.get_data().decode('utf8')
     ReceivedDict=json.loads(ReceivedDict)
 

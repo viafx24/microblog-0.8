@@ -60,6 +60,9 @@ def SaveTrainingResults():
     ReceivedDict = request.get_data().decode('utf8')
     ReceivedDict=json.loads(ReceivedDict)
 
+    citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
+    print(citation)
+
     # the -1 in the two following line come from indexation from zero of python
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].TRT=ReceivedDict['NewTRT']
@@ -67,6 +70,8 @@ def SaveTrainingResults():
 
     # in the following line, there is no -1 because indexation of the query (bdd) begin from 1
     citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
+
+    print(citation)
 
     return jsonify(citation.SRR,citation.TRT)
 

@@ -32,7 +32,7 @@ def RequestCitations():
         citations=Citation.query.order_by(Citation.SRR).filter(Citation.number>=int(ReceivedData[0])).all()
         #print(citations)
     elif ReceivedData[2]=="order" or ReceivedData[2]=="rand" :
-        citations=Citation.query.filter(Citation.number>=int(ReceivedData[0])).all()
+        citations=Citation.query.order_by(Citation.number).filter(Citation.number>=int(ReceivedData[0])).all()
         #print(citations)
 
     dicts = {}

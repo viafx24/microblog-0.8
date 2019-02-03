@@ -7,3 +7,7 @@ print(u)
 print(Citation.query.all())
 
 print(Citation.query.get(1))
+
+
+citations=Citation.query.order_by(Citation.number).filter(Citation.number>=64).all()
+print(citations)

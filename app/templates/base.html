@@ -1,8 +1,5 @@
 {% extends 'bootstrap/base.html' %}
 
-
-
-
 {% block title %}
     {% if title %}{{ title }} - Via_fx_24{% else %}Welcome Via_fx_24{% endif %}
 {% endblock %}
@@ -22,7 +19,8 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('index') }}">Accueil</a></li>
+                <li><a href="{{ url_for('seneque') }}">Sénèque</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_anonymous %}

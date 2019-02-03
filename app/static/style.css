@@ -1,5 +1,10 @@
 ﻿body {}
 
+
+span.text {
+    font-size: 18px;
+}
+
 #Plusone, #Minusone, #Suivant {
     height: 100px;
     width: 33%

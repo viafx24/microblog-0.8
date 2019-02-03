@@ -8,7 +8,7 @@ from random import sample
 
 
 @app.route('/seneque')
-def index():
+def seneque():
 
     citations=Citation.query.order_by(Citation.number).all()
 
@@ -19,10 +19,7 @@ def index():
 @app.route('/index')
 @login_required
 def index():
-
-    citations=Citation.query.all()
-
-    return render_template('index.html', title='Home', citations=citations)
+    return render_template('index.html', title='Home')
 
 
 @app.route('/RequestCitations', methods=['POST'])

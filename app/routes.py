@@ -48,7 +48,7 @@ def RequestCitations():
     for i in keys:
         dicts[i]=[citations[keys2[i-1]].number,citations[keys2[i-1]].text,citations[keys2[i-1]].SRR,citations[keys2[i-1]].TRT]
         
-    #print(dicts)
+    print(dicts)
 
     return jsonify(dicts)
 

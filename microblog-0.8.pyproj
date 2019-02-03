@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{f5b9451a-f221-4bed-ad8c-e60483d953ed}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>microblog.py</StartupFile>
+    <StartupFile>Query_Database.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -46,6 +46,9 @@
     <Compile Include="migrations\env.py" />
     <Compile Include="migrations\versions\780739b227a7_posts_table.py" />
     <Compile Include="migrations\versions\e517276bb1c2_users_table.py" />
+    <Compile Include="Query_Database.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app" />

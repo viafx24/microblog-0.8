@@ -107,7 +107,7 @@ $(function () {
         // change the fontsize of ctiation text when the text is too long
         var NumberLetter = citations[iteration][1].length
 
-        if (NumberLetter > 450) {
+        if (NumberLetter > 440) {
             if ($(window).width() > 850) {
                 $("#ShowCitation").css("font-size", "24px")
             }

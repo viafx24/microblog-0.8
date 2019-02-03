@@ -48,16 +48,21 @@ span.text {
     }
 
     #Plusone, #Minusone, #Suivant {
-        height: 100px;
+        height: 80px;
         width: 32%
     }
 
     #IDShowSRRandTRT {
-        height: 25px;
+        height: 18px;
         
     }
     #ShowSRRandTRT {
         font-size: 12px;
+    }
+
+    #Run {
+        height: 40px;
+        width: 20%
     }
 
 }

@@ -33,6 +33,7 @@
     <Content Include="Procfile" />
     <Content Include="requirements.txt" />
     <Content Include="app\templates\_post.html" />
+    <Content Include="app\templates\seneque.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\forms.py" />

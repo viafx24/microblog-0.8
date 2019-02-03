@@ -6,6 +6,15 @@ from app.forms import LoginForm, RegistrationForm
 from app.models import User, Citation
 from random import sample
 
+
+@app.route('/seneque')
+def index():
+
+    citations=Citation.query.order_by(Citation.number).all()
+
+    return render_template('seneque.html', title='Seneque', citations=citations)
+
+
 @app.route('/')
 @app.route('/index')
 @login_required

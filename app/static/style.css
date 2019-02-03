@@ -1,5 +1,12 @@
 ﻿body {}
 
+label {
+    font-size: 16px;
+}
+#typeofsort, #numbercitation, #begincitation {
+    font-size: 20px;
+    /*font: inherit;*/
+}
 
 span.text {
     font-size: 18px;
@@ -32,6 +39,25 @@ span.text {
 
 @media screen and (max-width: 800px) {
     #ShowCitation {
-        font-size: 20px;
+        font-size: 16px;
     }
+
+    .parent {
+        display: flex;
+        height: 180px;
+    }
+
+    #Plusone, #Minusone, #Suivant {
+        height: 100px;
+        width: 32%
+    }
+
+    #IDShowSRRandTRT {
+        height: 25px;
+        
+    }
+    #ShowSRRandTRT {
+        font-size: 12px;
+    }
+
 }

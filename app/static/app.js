@@ -48,9 +48,7 @@ $(function () {
                 var errorMessage = xhr.status + ': ' + xhr.statusText;
                 alert('Erreur - ' + errorMessage);
             }
-
         });
-
     });
 
     $("#Plusone").click(function () {
@@ -109,7 +107,12 @@ $(function () {
         // change the fontsize of ctiation text when the text is too long
         var NumberLetter = citations[iteration][1].length
         if (NumberLetter > 500) {
-            $("#ShowCitation").css("font-size", "20px")
+            if ($(window).width() > 850) {
+                $("#ShowCitation").css("font-size", "24px")
+            }
+            else {
+                $("#ShowCitation").css("font-size", "10px")
+            }
         }
     }
 });

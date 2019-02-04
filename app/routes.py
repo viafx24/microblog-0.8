@@ -54,7 +54,7 @@ def RequestCitations():
     for i in keys:
         dicts[i]=[citations[keys2[i-1]].number,citations[keys2[i-1]].text,citations[keys2[i-1]].SRR,citations[keys2[i-1]].TRT]
         
-    print(dicts)
+    #print(dicts)
 
     return jsonify(dicts)
 
@@ -63,12 +63,10 @@ def RequestCitations():
 def SaveTrainingResults():
 
     citations=Citation.query.order_by(Citation.number).all()
-    print(citations)
     ReceivedDict = request.get_data().decode('utf8')
     ReceivedDict=json.loads(ReceivedDict)
 
     citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
-    print(citation)
 
     # the -1 in the two following line come from indexation from zero of python
     citations[int(ReceivedDict['CurrentCitationNumber'])-1].SRR=ReceivedDict['NewSRR']
@@ -77,8 +75,6 @@ def SaveTrainingResults():
 
     # in the following line, there is no -1 because indexation of the query (bdd) begin from 1
     citation=Citation.query.get(int(ReceivedDict['CurrentCitationNumber']))
-
-    print(citation)
 
     return jsonify(citation.SRR,citation.TRT)
 

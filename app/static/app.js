@@ -23,12 +23,42 @@ $(function () {
         }
     });
 
+    //$('#typeofsort').change(function () {
+    //    if ($('#typeofsort').val() == 'rand')
+    //        alert('rand')
+        
+    //});
+
+
+
     $("#Run").click(function () {
 
         iteration = 1;
         BeginCitation = $('#begincitation').val();
         NumberCitation = $('#numbercitation').val();
         TypeOfSort = $('#typeofsort').val();
+
+        if ($('#typeofsort').val() == 'rand') {
+
+            debut = parseInt(BeginCitation)
+            fin = parseInt(BeginCitation) + parseInt(NumberCitation)
+            Sample=range(debut, fin, 1)
+            var RandomSample = getRandomSubarray(Sample, Sample.length);
+            alert(RandomSample)
+            var RandomSampleOld = RandomSample.slice()
+            var person = prompt("Enter a number");
+            for (var iter = 0; iter < RandomSample.length; iter++) {
+                RandomSample[iter] = RandomSample[iter] + parseInt(person)
+                while (RandomSample[iter] > (fin-1)) {
+                    RandomSample[iter] = debut + (RandomSample[iter]-fin)
+                }
+            }
+            alert('The first : ' + RandomSampleOld + '\n\n\n The second : ' + RandomSample)
+            
+ 
+        }
+
+
 
         //problem with the input number and step 10 that doesn't work if min is not equal to zero
         if (NumberCitation == 0) {
@@ -41,8 +71,10 @@ $(function () {
             type: 'POST',
             data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort]),
             success: function (ReceivedDict) {
-                citations = ReceivedDict;
+                citations = ReceivedDict[0];
+                //alert(ReceivedDict[1])
                 ShowNumber();
+                
             },
             error: function (xhr, status, error) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText;
@@ -116,4 +148,39 @@ $(function () {
             }
         }
     }
+    //find on the web
+    function getRandomSubarray(arr, size) {
+        var shuffled = arr.slice(0), i = arr.length, temp, index;
+        while (i--) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
+        }
+        return shuffled.slice(0, size);
+    }
+
+    //find on the web
+    function range(start, stop, step) {
+        if (typeof stop == 'undefined') {
+            // one param defined
+            stop = start;
+            start = 0;
+        }
+
+        if (typeof step == 'undefined') {
+            step = 1;
+        }
+
+        if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
+            return [];
+        }
+
+        var result = [];
+        for (var i = start; step > 0 ? i < stop : i > stop; i += step) {
+            result.push(i);
+        }
+
+        return result;
+    };
 });

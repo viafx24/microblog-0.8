@@ -57,7 +57,7 @@ def RequestCitations():
         
     #print(dicts)
 
-    return jsonify(dicts)
+    return jsonify(dicts, keys2)
 
 
 @app.route('/SaveTrainingResults', methods=['POST'])

@@ -42,7 +42,21 @@ class Citation(db.Model):
     TRT = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    #looks like relationship respect la CASSE (H with History)
+    histories = db.relationship('History', backref='citation', lazy='dynamic')
 
     def __repr__(self):
         return '<Citation {} (text={}, SRR={}, TRT={})>'.format(
                 self.number, self.text[:5], self.SRR, self.TRT)
+
+class History(db.Model):
+    number=db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    SRR = db.Column(db.Integer)
+    TRT = db.Column(db.Float)
+    #looks like ForeignKey don't respect la CASSE (no C in citation)
+    citation_id = db.Column(db.Integer, db.ForeignKey('citation.number'))
+
+    def __repr__(self):
+        return '<History {} (timestamp={}, SRR={}, TRT={}, citation_id={})>'.format(
+                self.number, self.timestamp, self.SRR, self.TRT, self.citation_id)

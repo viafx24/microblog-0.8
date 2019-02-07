@@ -1,5 +1,5 @@
-from app import db
-from app.models import User, Citation
+#from app import db
+#from app.models import User, Citation
 import pickle
 import pandas as pd
 
@@ -7,9 +7,19 @@ with open('Data','rb') as fichier:
         mon_depickler = pickle.Unpickler(fichier)
         Data=mon_depickler.load()
 
-#print(Data[300].text)
 
 
+
+#Data[300].Historique.reset_index(["Date"],inplace=True)
+
+#A=Data[300].Historique["Date"].astype('int64')//1e9
+#print(A)
+
+#print(pd.to_datetime(A[1], unit='s'))
+
+#Data[300].Historique.Timestamp=Data[300].Historique.Timestamp(Data[300].Historique["Date"][1])
+
+#print(Data[300].Historique.Timestamp)
 
 
 #users = User.query.all()
@@ -34,16 +44,16 @@ with open('Data','rb') as fichier:
 
 
 
-u = User.query.get(1)
+#u = User.query.get(1)
 
-for i in range(1,len(Data)):
+#for i in range(1,len(Data)):
 
-    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
-    db.session.add(citation)
-    db.session.commit()
+#    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
+#    db.session.add(citation)
+#    db.session.commit()
 
 
-print(Citation.query.all())
+#print(Citation.query.all())
 
 
 

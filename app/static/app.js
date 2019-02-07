@@ -5,6 +5,7 @@ $(function () {
     var firstTimestamp
     var secondTimestamp
     var count
+    //var RandomSample = []
 
 
     $("#begincitation").change(function () {
@@ -42,23 +43,26 @@ $(function () {
 
             debut = parseInt(BeginCitation)
             fin = parseInt(BeginCitation) + parseInt(NumberCitation)
-            Sample=range(debut, fin, 1)
+            Sample = range(debut, fin, 1)
             var RandomSample = getRandomSubarray(Sample, Sample.length);
             alert(RandomSample)
             var RandomSampleOld = RandomSample.slice()
             var person = prompt("Enter a number");
             for (var iter = 0; iter < RandomSample.length; iter++) {
                 RandomSample[iter] = RandomSample[iter] + parseInt(person)
-                while (RandomSample[iter] > (fin-1)) {
-                    RandomSample[iter] = debut + (RandomSample[iter]-fin)
+                while (RandomSample[iter] > (fin - 1)) {
+                    RandomSample[iter] = debut + (RandomSample[iter] - fin)
                 }
             }
             alert('The first : ' + RandomSampleOld + '\n\n\n The second : ' + RandomSample)
-            
- 
+
+            RandomSample = RandomSample.toString();
         }
-
-
+        else {
+            RandomSample =[]
+        }
+       
+    
 
         //problem with the input number and step 10 that doesn't work if min is not equal to zero
         if (NumberCitation == 0) {
@@ -69,12 +73,10 @@ $(function () {
         $.ajax({
             url: '/RequestCitations',
             type: 'POST',
-            data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort]),
+            data: JSON.stringify([BeginCitation, NumberCitation, TypeOfSort, RandomSample]),
             success: function (ReceivedDict) {
-                citations = ReceivedDict[0];
-                //alert(ReceivedDict[1])
+                citations = ReceivedDict;
                 ShowNumber();
-                
             },
             error: function (xhr, status, error) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText;

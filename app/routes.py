@@ -28,6 +28,8 @@ def RequestCitations():
     ReceivedData = request.get_data().decode('utf8')
     ReceivedData=json.loads(ReceivedData)
 
+    #print(ReceivedData)
+
     if ReceivedData[2]=="SRR/TRT":
         citations=Citation.query.order_by(Citation.SRR).order_by(Citation.TRT.desc()).filter(Citation.number>=int(ReceivedData[0])).all()
         #print(citations)
@@ -49,15 +51,20 @@ def RequestCitations():
     keys2= range(0,int(ReceivedData[1]))
 
     if ReceivedData[2]=="rand":
-        keys2= sample(keys2, len(keys2)) # the sample function randomly shuffle the list keys2
-
+        # the line below is the old function/line
+        #keys2= sample(keys2, len(keys2)) # the sample function randomly shuffle the list keys2
+        # new lines to use with javascript:
+        keys2=ReceivedData[3].split(',')
+        keys2=[int(i)-1 for i in keys2]
+        #indexes must begin by zero
+        keys2=[i-min(keys2) for i in keys2]
 
     for i in keys:
         dicts[i]=[citations[keys2[i-1]].number,citations[keys2[i-1]].text,citations[keys2[i-1]].SRR,citations[keys2[i-1]].TRT]
         
     #print(dicts)
 
-    return jsonify(dicts, keys2)
+    return jsonify(dicts)
 
 
 @app.route('/SaveTrainingResults', methods=['POST'])

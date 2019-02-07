@@ -51,6 +51,7 @@ def RequestCitations():
     if ReceivedData[2]=="rand":
         keys2= sample(keys2, len(keys2)) # the sample function randomly shuffle the list keys2
 
+
     for i in keys:
         dicts[i]=[citations[keys2[i-1]].number,citations[keys2[i-1]].text,citations[keys2[i-1]].SRR,citations[keys2[i-1]].TRT]
         

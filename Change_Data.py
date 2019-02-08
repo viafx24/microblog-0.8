@@ -1,5 +1,5 @@
-#from app import db
-#from app.models import User, Citation
+from app import db
+from app.models import User, Citation
 import pickle
 import pandas as pd
 
@@ -44,16 +44,16 @@ with open('Data','rb') as fichier:
 
 
 
-#u = User.query.get(1)
+u = User.query.get(1)
 
-#for i in range(1,len(Data)):
+for i in range(1,len(Data)):
 
-#    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
-#    db.session.add(citation)
-#    db.session.commit()
+    citation = Citation(text=Data[i].text,SRR=Data[i].SRR,TRT=Data[i].TRT,author=u)
+    db.session.add(citation)
+    db.session.commit()
 
 
-#print(Citation.query.all())
+print(Citation.query.all())
 
 
 
@@ -74,6 +74,7 @@ with open('Data','rb') as fichier:
 
 #db.session.commit()
 
+#print(Citation.query.all())
 
 ##import csv
 #import pickle

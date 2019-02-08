@@ -23,5 +23,5 @@ class Config(object):
     #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     #    'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://postgres:cardinal@localhost:5432/test-load-heroku-backup'
+        'postgresql://postgres:cardinal@localhost:5432/local-database-dev'
     SQLALCHEMY_TRACK_MODIFICATIONS = False

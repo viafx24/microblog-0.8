@@ -20,8 +20,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or '#5fbd9d}QE|c*i[Ysh8kCsjgf(jtIe'
     #previous variable for sqlite:
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-    #    'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://postgres:cardinal@localhost:5432/local-database-dev'
+        'sqlite:///' + os.path.join(basedir, 'app.db')
+    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    #    'postgresql://postgres:cardinal@localhost:5432/local-database-dev'
     SQLALCHEMY_TRACK_MODIFICATIONS = False

@@ -15,6 +15,13 @@ def seneque():
     return render_template('seneque.html', title='Seneque', citations=citations)
 
 
+
+@app.route('/attracteurs')
+@login_required
+def attracteurs():
+    return render_template('attracteurs.html', title='Attracteurs')
+
+
 @app.route('/')
 @app.route('/index')
 @login_required

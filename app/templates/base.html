@@ -21,7 +21,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('index') }}">Accueil</a></li>
                 <li><a href="{{ url_for('seneque') }}">Sénèque</a></li>
-                <li><a href="{{ url_for('attracteurs') }}">Attracteurs</a></li>
+                <li><a href="{{ url_for('attracteur_AC') }}">Attracteur AC</a></li>
+                <li><a href="{{ url_for('attracteur_Corps') }}">Attracteur Corps</a></li>
+                <li><a href="{{ url_for('attracteur_Metaphysique') }}">Attracteur Métaphysique</a></li>
+                <li><a href="{{ url_for('attracteur_RC') }}">Attracteur RC</a></li>
+                <li><a href="{{ url_for('attracteur_Trojan') }}">Attracteur Trojan</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_anonymous %}

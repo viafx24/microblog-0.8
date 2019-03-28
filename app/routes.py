@@ -16,10 +16,31 @@ def seneque():
 
 
 
-@app.route('/attracteurs')
+@app.route('/attracteur_AC')
 @login_required
-def attracteurs():
-    return render_template('attracteurs.html', title='Attracteurs')
+def attracteur_AC():
+    return render_template('attracteur_AC.html', title='Attracteur AC')
+
+@app.route('/attracteur_Corps')
+@login_required
+def attracteur_Corps():
+    return render_template('attracteur_Corps.html', title='Attracteur Corps')
+
+@app.route('/attracteur_Metaphysique')
+@login_required
+def attracteur_Metaphysique():
+    return render_template('attracteur_Metaphysique.html', title='Attracteur Métaphysique')
+
+@app.route('/attracteur_RC')
+@login_required
+def attracteur_RC():
+    return render_template('attracteur_RC.html', title='Attracteur Ressentiment/Colère')
+
+@app.route('/attracteur_Trojan')
+@login_required
+def attracteur_Trojan():
+    return render_template('attracteur_Trojan.html', title='Attracteur Trojan')
+
 
 
 @app.route('/')

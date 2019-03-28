@@ -23,7 +23,11 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="app\static\style.css" />
-    <Content Include="app\templates\attracteurs.html" />
+    <Content Include="app\templates\attracteur_RC.html" />
+    <Content Include="app\templates\attracteur_Trojan.html" />
+    <Content Include="app\templates\attracteur_Metaphysique.html" />
+    <Content Include="app\templates\attracteur_Corps.html" />
+    <Content Include="app\templates\attracteur_AC.html" />
     <Content Include="app\templates\base.html" />
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\login.html" />

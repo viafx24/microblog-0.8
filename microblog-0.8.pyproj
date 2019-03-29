@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="app\static\jquery.toc.min.js" />
     <Content Include="app\static\style.css" />
     <Content Include="app\templates\attracteur_RC.html" />
     <Content Include="app\templates\attracteur_Trojan.html" />

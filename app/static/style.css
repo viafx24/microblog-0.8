@@ -37,6 +37,16 @@ span.text {
     text-align: justify;
 }
 
+
+.MonArticle {
+    width: 62%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.5
+}
+
+
+
 @media screen and (max-width: 800px) {
     #ShowCitation {
         font-size: 16px;

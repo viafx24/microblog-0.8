@@ -127,7 +127,7 @@ $(function () {
             },
             error: function(xhr, status, error) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText;
-                  alert('Erreur - ' + errorMessage);
+            //      alert('Erreur - ' + errorMessage);
             }
         });
         $("#ShowCitation").html(citations[iteration][1]);

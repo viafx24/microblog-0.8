@@ -106,7 +106,7 @@ $(function () {
         $("#ShowCitation").html(citations[iteration][0]);
         $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
         $('#Suivant').attr("disabled", "disabled")
-        $("#ShowSRRandTRT").html('')
+        $("#ShowSRRandTRT").html('Count=' + count)
 
     }
 
@@ -138,6 +138,10 @@ $(function () {
         if (iteration < count) {
             $('#Suivant').removeAttr('disabled');
         }
+
+
+
+
         // change the fontsize of ctiation text when the text is too long
         var NumberLetter = citations[iteration][1].length
 

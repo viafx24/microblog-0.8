@@ -106,7 +106,7 @@ $(function () {
         $("#ShowCitation").html(citations[iteration][0]);
         $("#ShowCitation").css({ "font-size": "60px", "text-align": "center" })
         $('#Suivant').attr("disabled", "disabled")
-        $("#ShowSRRandTRT").html('Count=' + count)
+        $("#ShowSRRandTRT").html('Count=' + iteration)
 
     }
 

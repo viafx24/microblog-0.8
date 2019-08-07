@@ -42,6 +42,9 @@
     <Content Include="app\templates\seneque.html" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_Citation_To_Database.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\routes.py" />
@@ -53,7 +56,7 @@
     <Compile Include="migrations\env.py" />
     <Compile Include="migrations\versions\780739b227a7_posts_table.py" />
     <Compile Include="migrations\versions\e517276bb1c2_users_table.py" />
-    <Compile Include="Query_Database.py">
+    <Compile Include="Querry_Database.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

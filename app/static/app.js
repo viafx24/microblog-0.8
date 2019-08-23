@@ -5,11 +5,28 @@ $(function () {
     var firstTimestamp
     var secondTimestamp
     var count
+    var NumberCitationMax
     //var RandomSample = []
 
 
+    // this ajax function allows to get the max number of citation by request to the corresponding road
+    $.ajax({
+        url: '/GetNumberMaxCitation',
+        type: 'POST',
+        success: function (ReceivedDict) {
+            NumberCitationMax = ReceivedDict;
+         //   alert(NumberCitationMax)
+        },
+        error: function (xhr, status, error) {
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+            alert('Erreur - ' + errorMessage);
+        }
+    });
+
+
+
     $("#begincitation").change(function () {
-        numbermax = 300 - $("#begincitation").val() + 1
+        numbermax = NumberCitationMax - $("#begincitation").val() + 1
         $("#numbercitation").attr("max", numbermax)
         if ($("#numbercitation").val() > numbermax) {
             $("#numbercitation").val(numbermax)
@@ -17,7 +34,7 @@ $(function () {
     });
 
     $("#numbercitation").change(function () {
-        numbermax = 300 - $("#numbercitation").val() + 1
+        numbermax = NumberCitationMax - $("#numbercitation").val() + 1
         $("#begincitation").attr("max", numbermax)
         if ($("#begincitation").val() > numbermax) {
             $("#begincitation").val(numbermax)

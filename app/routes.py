@@ -95,6 +95,14 @@ def RequestCitations():
     return jsonify(dicts)
 
 
+
+@app.route('/GetNumberMaxCitation', methods=['POST'])
+def GetNumberMaxCitation():
+    NumberMaxCitation=Citation.query.order_by(Citation.number.desc()).first()
+   # print(NumberMaxCitation.number)
+
+    return jsonify(NumberMaxCitation.number)
+
 @app.route('/SaveTrainingResults', methods=['POST'])
 def SaveTrainingResults():
 

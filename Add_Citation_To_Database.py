@@ -16,52 +16,52 @@ from app.models import User, Citation
 
 
 
-## ajout d'un batch de 10 citations;
+# ajout d'un batch de 10 citations;
 
-#u = User.query.get(1)
+u = User.query.get(1)
 
-#citation = Citation(text='Je sais et je sens que faire du bien est le plus vrai bonheur que le cœur humain puisse goûter.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Dans le monde, il y a toujours des gens qui ne supportent pas la lumière. C’est parce qu’ils sont eux-mêmes remplis d’ombre.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='L’esprit ressemble à un singe entravé par de nombreux liens, qui ne cesserait de sauter dans tous les sens pour se détacher. Il gesticule tant et si bien qu’il empêche quiconque, y compris lui-même, de défaire un seul nœud. Il faut commencer par le pacifier et le rendre attentif. Calmer le singe ne signifie pas l’immobiliser en le gardant enchainé. Le but est de profiter de ce répit pour lui rendre la liberté.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Jamais il ne fait au méchant l’honneur de croire que la raison ait inspiré un seul de ses actes.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Pour celui qui pratique l’amour et la compassion, un ennemi représente l’un des maîtres les plus importants. Sans ennemi, on ne peut pratiquer la patience et la tolérance.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Il n’est pas naturel que celui qui a la force désire beaucoup le pouvoir ; et l’on a souvent remarqué que les athlètes sont rarement méchants.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Il y a une chose dont nous avons toujours besoin : c’est du gardien appelé Attention.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Le guerrier est un métaphysicien. Le guerrier s’est dessiné un dieu, une justice, des maximes, un ordre humain qu’il croit surhumain. Par un retour sur lui-même que tout homme connaît, il honore en lui-même, plus que tout, ce pouvoir de trouver la loi et de la suivre. D’où la pire injure qu’on puisse lui faire c’est de penser autrement que lui, c’est de vivre d’après d’autres maximes que les siennes ; c’est de mépriser ce qu’il honore.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Et le marin ne rirait-il pas de vous si vous lui disiez que toute la traversée dépend du premier coup de barre ?',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Le courage vraiment sûr est celui qui s’observe beaucoup et longtemps, qui se couvre d’abord et n’avance qu’à pas lents et calculés.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Le marin en haute mer, le guide de haute montagne, l’artisan consciencieux savent que l’on n’obtient rien de bon en obéissant au caprice du moment.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='L’effort excessif peut aussi résulter de l’impatience ou de l’exaltation, deux états qui ne mènent nulle part. De même qu’il faut de la patience pour faire pousser une récolte, il ne sert à rien de tirer sur les plans pour les faire sortir plus vite.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='L’aspect le plus évident de la vanité est la raideur et la rigidité. On se sent l’esprit raide comme un python qui aurait avalé une proie.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Ce qui est venu par la fatigue s’en va par le repos.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Une bouffé d’orgueil se dissipe comme une brume matinale chez celui qui sait rester humble.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='C’est pourtant bien à notre esprit que nous avons affaire du matin au soir, et c’est lui qui en fin de compte, détermine la qualité de chaque instant de notre existence. Nos pensées détiennent ainsi l’immense pouvoir de conditionner notre manière d’être.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='L’humilité est la vertu féconde de celui qui mesure tout ce qui lui reste à apprendre et l’étendue du chemin qu’il doit encore parcourir.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Ce sont les autres, tous les autres, qui fondent la trame de nos vies et forment la matière de nos existences.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citation = Citation(text='Montre-moi plutôt à ne pas exhaler la plainte au milieu de l’adversité.',SRR=1,TRT=1,author=u)
-#db.session.add(citation)
-#db.session.commit()
+citation = Citation(text='Heureux par-dessus tout celui qui sent la trace de son coup de marteau sur le loquet de sa porte.',SRR=1,TRT=1,author=u)
+db.session.add(citation)
+db.session.commit()
 
-#citations=Citation.query.order_by(Citation.number).filter(Citation.number>=299).all()
-#print(citations)
+citations=Citation.query.order_by(Citation.number).filter(Citation.number>=299).all()
+print(citations)
 
 
 

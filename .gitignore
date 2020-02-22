@@ -262,3 +262,5 @@ __pycache__/
 /env
 # app.db
 # /app.db
+/env1
+/env2
